@@ -1,1 +1,1 @@
-"# flash-detect" 
+# flash-detect
