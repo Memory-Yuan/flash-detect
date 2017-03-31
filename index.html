@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+	<title>test</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css" media="screen">
+		html,
+		body {
+			height: 100%;
+			background-color: #000000;
+		}
+		
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		
+		#flashContent {
+			width: 100%;
+			height: 100%;
+		}
+		
+		#flash-help-content {
+			color: white;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			font-family: helvetica, arial, sans-serif;
+			width: 640px;
+			/*height: 50%;*/
+		}
+		
+		#flash-help-content h1 {
+			text-align: center;
+		}
+		
+		#flash-help-content a {
+			color: #F5C400;
+			text-decoration: none;
+		}
+		
+		#flash-help-content p {
+			font-size: 1.5em;
+		}
+		
+		#flash-help-content .not-work-text {
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript" src="PluginDetect.js"></script>
+	<script type="text/javascript">
+		// http://www.pinlady.net/PluginDetect/download/
+		PluginDetect.getVersion(".");
+		var version = PluginDetect.getVersion('Flash', true);
+		if (PluginDetect.browser.isChrome) {
+			if (version == null) {
+				window.alert("Sorry, Flash Player is either not installed or not enabled.");
+			} else {
+				var maxversion = parseInt(version.substring(0, 1));
+				if (maxversion <= 0) {
+					window.alert("Sorry, Flash Player is not installed or not enabled.");
+					window.location = "https://get.adobe.com/flashplayer/";
+				}
+			}
+		} else {
+			if (version == null) {
+				window.alert("Sorry, Flash Player is either not installed or not enabled.");
+				window.location = "https://get.adobe.com/flashplayer/";
+			} else {
+				var maxversion = parseInt(version.substring(0, 1));
+				if (maxversion <= 0) {
+					window.alert("you dont have a flash player");
+					window.location = "https://get.adobe.com/flashplayer/";
+				}
+			}
+		}
+	</script>
+
+	<script type="text/javascript" src="swfobject.js"></script>
+	<script type="text/javascript">
+		// For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
+		var swfVersionStr = "10.2.0";
+		// To use express install, set to playerProductInstall.swf, otherwise the empty string. 
+		var xiSwfUrlStr = "false";
+		var flashvars = {};
+		var params = {};
+		params.quality = "high";
+		// params.bgcolor = "#000000";
+		params.allowscriptaccess = "always";
+		params.allowfullscreen = "true";
+		var attributes = {};
+		attributes.id = "Gameclient";
+		attributes.name = "Gameclient";
+		attributes.align = "middle";
+		swfobject.embedSWF(
+			"test.swf", "flashContent",
+			"900", "675",
+			swfVersionStr, xiSwfUrlStr,
+			flashvars, params, attributes);
+		// JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
+		swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+	</script>
+</head>
+
+<body>
+	<div id="flashContent">
+		<div id="flash-help-content">
+			<!--English start-->
+			<h1>Please enable Adobe Flash</h1>
+			<p class="guide-text">To continue playing, click the box below and then select "Allow" at the prompt windows.</p>
+			<embed type="application/x-shockwave-flash" src="" width="100%" height="360" />
+			<p class="not-work-text">
+				<b>Still not working?</b>
+				<span>Please check the</span>
+				<a href="https://helpx.adobe.com/flash-player.html" target="_blank" class="flash-help-link">Flash Player Help</a>
+			</p>
+			<!--English end-->
+
+			<!--Chinese start-->
+			<!--<h1>请启用 Adobe Flash</h1>
+			<p class="guide-text">点击下方区域并在提示视窗选择"允许"，以继续游玩</p>
+			<embed type="application/x-shockwave-flash" src="" width="100%" height="360" />
+			<p class="not-work-text">
+				<b>如果还是不行，</b>
+				<span>请参考</span>
+				<a href="https://helpx.adobe.com/cn/flash-player.html" target="_blank" class="flash-help-link">Adobe Flash Player在线帮助</a>
+			</p>-->
+			<!--Chinese end-->
+		</div>
+	</div>
+</body>
+
+</html>
